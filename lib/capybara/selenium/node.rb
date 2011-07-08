@@ -66,6 +66,7 @@ class Capybara::Selenium::Node < Capybara::Driver::Node
   alias :checked? :selected?
 
   def find(locator)
+    text # Fix timeout bug on Selenium
     native.find_elements(:xpath, locator).map { |n| self.class.new(driver, n) }
   end
 

@@ -35,6 +35,7 @@ module Capybara
       def has_selector?(*args)
         options = if args.last.is_a?(Hash) then args.last else {} end
         wait_conditionally_until do
+          session.body # Fix timeout bug on Selenium
           results = all(*args)
 
           case
@@ -67,6 +68,7 @@ module Capybara
       def has_no_selector?(*args)
         options = if args.last.is_a?(Hash) then args.last else {} end
         wait_conditionally_until do
+          session.body # Fix timeout bug on Selenium
           results = all(*args)
 
           case

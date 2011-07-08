@@ -121,6 +121,7 @@ module Capybara
     protected
 
       def find_in_base(xpath)
+        text # Fix timeout bug on Selenium
         native.xpath(xpath).map { |node| self.class.new(node) }
       end
 

@@ -157,6 +157,7 @@ module Capybara
     protected
 
       def find_in_base(xpath)
+        session.body # Fix timeout bug on Selenium
         base.find(xpath)
       end
 

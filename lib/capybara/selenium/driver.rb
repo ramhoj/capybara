@@ -46,6 +46,7 @@ class Capybara::Selenium::Driver < Capybara::Driver::Base
   end
 
   def find(selector)
+    body # Fix timeout bug on Selenium
     browser.find_elements(:xpath, selector).map { |node| Capybara::Selenium::Node.new(self, node) }
   end
 
